@@ -10,33 +10,18 @@ class ItemsController < ApplicationController
   end
 
   def show
-
-    @item = Item.find(params[:id])
-    
-    # 実装中、残しておく7/24木下
-    # # @card = CreditCard.find(params[:id]
-    # # @card = CreditCard.find_by(user_id: current_user.id)
-    # # card = CreditCard.find_by(user_id: current_user.id)
-    # # if @card.present?
-    # #   card_data(@card)
-    # #   @card = CreditCard.find_by(user_id: current_user.id)
-    # if @card.blank?
-    #   redirect_to  new_credit_card_path
-    # else
-    #   redirect_to new_credit_card_path
-    # end
-   
+    @item = Item.find(params[:id])   
   end
 
   def new
     @item = Item.new
     @images = @item.item_images.build
-
   end
 
   def category_children
     @category_children = Category.find(params[:parent_name]).children
   end
+
   def category_grandchildren
     @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
@@ -53,8 +38,7 @@ class ItemsController < ApplicationController
       @categories = Category.all
       @category_parent_array = ["---"]
       Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent.name
-      
+      @category_parent_array << parent.name      
       end
     end
   end
@@ -87,25 +71,17 @@ class ItemsController < ApplicationController
     card = CreditCard.find_by(user_id: current_user.id)
     
     if card.blank?
-
       redirect_to pay_credit_cards_path
     else
-      # セキュリティのためdotenvの.envからcredentials.ymlに記述変更。環境変数は一旦残しておきます7/24木下
-      # Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-      Payjp.api_key = Rails.application.credentials[:PAYJP][:secret_access_key]
-      
-      customer = Payjp::Customer.retrieve(card.customer_id)
-      
+      Payjp.api_key = Rails.application.credentials[:PAYJP][:secret_access_key]      
+      customer = Payjp::Customer.retrieve(card.customer_id)      
       @default_card_information = customer.cards.retrieve(card.card_id)
     end
   end
 
   def pay
     card = CreditCard.find_by(user_id: current_user.id)
-    # セキュリティのためdotenvの.envからcredentials.ymlに記述変更。環境変数は一旦残しておきます7/24木下
-    # Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
     Payjp.api_key = Rails.application.credentials[:PAYJP][:secret_access_key]
-
     @item = Item.find_by(params[:id])
     Payjp::Charge.create(
     amount: @item.price,
@@ -116,8 +92,6 @@ class ItemsController < ApplicationController
   end
   
   def done
-    # find_byだと値がうまく取れないので一旦コメントアウトしております。問題なければ最終的に消す7/24木下
-    # @item = Item.find_by(params[:id])
     @item = Item.find(params[:id])
     @item.buyer_id = current_user.id
     if @item.save then
@@ -125,9 +99,7 @@ class ItemsController < ApplicationController
     else
       redirect_to item_path(params[:id])
     end
-  end
-
-  
+  end  
 
   def purchase_temporary
     card = CreditCard.find_by(user_id: current_user.id)
@@ -147,17 +119,14 @@ class ItemsController < ApplicationController
   def member_done
   end
 
-  #マイページフロント実装コードレビュー確認のための仮です。皆川6/10
   def mypage_exhibiting
   end
-  #マイページフロント実装コードレビュー確認のための仮です。皆川6/10
+
   def mypage_logout
-  end
-  #マイページフロント実装コードレビュー確認のための仮です。皆川6/10
+  end 
+
   def mypage_card
     card = CreditCard.where(user_id: current_user.id).first
-    # セキュリティのためdotenvの.envからcredentials.ymlに記述変更。環境変数は一旦残しておきます。7/24木下
-    # Payjp.api_key = '*************'
     Payjp.api_key = Rails.application.credentials[:PAYJP][:secret_access_key]
 
     if card then
@@ -166,9 +135,7 @@ class ItemsController < ApplicationController
     end
   end
 
-  #マイページフロント実装コードレビュー確認のための仮です。皆川6/10
   def mypage_card_create
-
   end
 
 

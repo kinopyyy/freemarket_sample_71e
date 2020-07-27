@@ -39,18 +39,13 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-
-  # Capistrano関連のGemをインストール5/20木下
   gem 'capistrano'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
-
-  # 単体テストのためテストに特化した言語であるRSpexを導入します 6/18木下
   gem 'rspec-rails'
   gem 'factory_bot_rails'
-
 end
 
 group :development do
@@ -70,7 +65,7 @@ group :test do
   gem 'selenium-webdriver'
 
   # Easy installation and use of chromedriver to run system tests with Chrome
-  # デフォルトのgemで'chromedriver-helper'は入っていたようだが、「bundle exec rspe」cの際非推奨とあったのでwebdriversに書き換え6/19木下
+  # 「bundle exec rspec」の際非推奨とあったのでwebdriversに書き換え6/19木下
   # gem 'chromedriver-helper'
   gem 'webdrivers'
 
@@ -85,10 +80,7 @@ end
 
 gem 'haml-rails'	
 gem 'font-awesome-sass'
-
-# binding.pryのgem
 gem 'pry-rails'
-
 gem 'devise'
 gem 'carrierwave'
 gem 'mini_magick'
@@ -98,18 +90,8 @@ gem "jquery-rails"
 gem 'jquery-turbolinks'
 gem 'payjp'
 gem 'rails-i18n'
-
-
-
-# ページネーションのために導入7/4木下
 gem 'kaminari'
-
-# S3導入のため6/26木下
 gem 'fog-aws'
-
-
-
-#環境変数設定のため7/13高松
 gem  "dotenv-rails"
 
 

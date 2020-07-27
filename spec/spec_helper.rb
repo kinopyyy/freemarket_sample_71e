@@ -1,4 +1,4 @@
-# この記述を入れたらエラー「An error occurred while loading spec_helper」治りました。。調べたけど意味がわかってません。6/18木下
+
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
@@ -21,7 +21,6 @@ require 'rspec/rails'
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
 
-  # テストコード記述の際、factory_botの記法の省略のために記述6/18木下
   config.include FactoryBot::Syntax::Methods
   
 

@@ -111,7 +111,6 @@ describe User do
       user.valid?
     end
 
-    # 一意性のチェック
     it "重複したemailが存在する場合登録できないこと" do      
       user = create(:user)
       another_user = build(:user, email: user.email)
@@ -202,8 +201,6 @@ describe User do
       expect(user).to be_valid 
     end
 
-
-
     # family_name_kana（苗字ふりがな）は全角カタカナのみ
     it 'family_name_kana,が全角カタカナであること（半角カナではない）' do
       user = build(:user, family_name_kana: "ｱｱ")
@@ -239,8 +236,6 @@ describe User do
       user = build(:user, family_name_kana: "アア")     
       expect(user).to be_valid 
     end
-
-
 
     # first_name_kana（名前ふりがな）は全角カタカナのみ
     it 'first_name_kanaが全角カタカナであること（半角カナではない）' do
@@ -278,14 +273,7 @@ describe User do
       expect(user).to be_valid 
     end
 
-    
-
-
-
-
-
-    # 送付先氏名関連　7/11木下
-
+    # 送付先氏名関連
     # destination_family_name（送付先氏名の苗字）は全角ひらがな・漢字・カタカナであること
     it 'destination_family_nameが全角であること（半角カナではない）' do
       user = build(:user, destination_family_name: "ｱｱ")
@@ -325,8 +313,6 @@ describe User do
       user = build(:user, destination_family_name: "アア")     
       expect(user).to be_valid 
     end
-
-
 
     # fdestination_irst_name（送付先氏名の名前）は全角ひらがな・漢字・カタカナであること
     it 'destination_first_nameが全角であること（半角カナではない）' do
@@ -368,8 +354,6 @@ describe User do
       expect(user).to be_valid 
     end
 
-
-
     # destination_family_name_kana（送付先氏名の苗字ふりがな）は全角カタカナのみ
     it 'destination_family_name_kana,が全角カタカナであること（半角カナではない）' do
       user = build(:user, destination_family_name_kana: "ｱｱ")
@@ -406,8 +390,6 @@ describe User do
       expect(user).to be_valid 
     end
 
-
-
     # destination_first_name_kana（送付先氏名の名前ふりがな）は全角カタカナのみ
     it 'destination_first_name_kanaが全角カタカナであること（半角カナではない）' do
       user = build(:user, destination_first_name_kana: "ｲｲ")
@@ -442,10 +424,7 @@ describe User do
     it 'destination_first_name_kanaが全角カタカナであれば登録できる' do
       user = build(:user, destination_first_name_kana: "イイ")     
       expect(user).to be_valid 
-    end
-
- 
-      
+    end      
   end
 end
 

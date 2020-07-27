@@ -6,11 +6,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   process resize_to_fit: [100, 100]
 
   # Choose what kind of storage to use for this uploader:
-  # 無事本番環境のみでS3ストレージに保存されれば下記の２行は削除する6/26木下
-  # storage :file
-  # storage :fog
+ 
 
-  # 環境ごとに保存先変更/デフォルトではstorage :fileがコメントアウトで入っている6/26木下
+  # 環境ごとに保存先変更/デフォルトではstorage :fileがコメントアウトで入っている（木下）
   if Rails.env.development?
     storage :file
   elsif Rails.env.test?

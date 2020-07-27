@@ -1,9 +1,4 @@
-# Capistrano導入に伴い、初期のコード全消し、以下全てペースト5/20木下
-
-
 # config valid only for current version of Capistrano
-# capistranoのバージョンを記載。固定のバージョンを利用し続け、バージョン変更によるトラブルを防止する
-# デプロイ時Capfile locked at 3.14.0, but 3.14.1 is loadedがでたので、書き換えた6/27木下
 # lock '3.14.0'
 lock '3.14.1'
 
@@ -29,8 +24,6 @@ set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
 # Unicornの設定ファイルの場所
 set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
 set :keep_releases, 5
-
-
 
 # S3設定6/26木下
 set :linked_files, %w{config/master.key}
