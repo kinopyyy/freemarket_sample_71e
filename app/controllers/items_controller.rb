@@ -47,7 +47,7 @@ class ItemsController < ApplicationController
       flash[:success] = "出品が完了しました！"
       redirect_to root_path
     else
-      flash[:alert] = "入力に誤りがあります。もう一度入力してください。"
+      flash.now[:alert] = "入力に誤りがあります。もう一度入力してください。"
       @images = @item.item_images.build
       render :new 
       @categories = Category.all
