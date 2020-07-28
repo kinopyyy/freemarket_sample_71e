@@ -11,7 +11,9 @@ Rails.application.configure do
   config.eager_load = true
 
   # Full error reports are disabled and caching is turned on.
-  config.consider_all_requests_local       = true
+  # 通常はfalse。trueにすると本番環境でもエラー画面が出ます
+  config.consider_all_requests_local       = false
+
   config.action_controller.perform_caching = true
 
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
@@ -24,7 +26,7 @@ Rails.application.configure do
 
   # Compress JavaScripts and CSS.
 
-  # 「本番環境にデプロイ作業時」に「デプロイエラー原因」になるためコメントアウトしました。木下5/18
+  # 「本番環境にデプロイ作業時」に「デプロイエラー原因」になるためコメントアウトしました。
   # config.assets.js_compressor = :uglifier
 
 

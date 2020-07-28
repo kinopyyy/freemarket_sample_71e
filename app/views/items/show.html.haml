@@ -71,21 +71,9 @@
     - elsif @item.buyer_id.present? 
       = link_to "売り切れました",root_path,class:"beyer-button"
     - else user_signed_in? && current_user.id != @item.seller_id
-      -# クレカなしの場合カード登録へリダイレクト、うまくいかないのでいったんコメントアウト7/24木下
-      -# - if @card_id.present?
-      -#   = link_to purchase_temporary_item_path, class: "item-buy-btn" do
-      -#     購入画面に進む
-      -# - else
-      -#   .item-buy__not
-      -#     %ul.item-buy__not--card
-      -#       ※お客様のカード情報はまだ登録されていません。
-      -#       %li
-      -#         = link_to new_credit_card_path, class: "new-card" do
-      -#           カード登録へ進む
       
       .main__buy-button
         = link_to "購入画面に進む", purchase_temporary_item_path, method: :get
-
       
     .main__messages
       =@item.item_introduction

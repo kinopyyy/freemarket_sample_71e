@@ -1,4 +1,4 @@
-# fogが使用するアップロード先の情報を設定6/26木下
+
 
 # CarrierWaveの設定呼び出し
 require 'carrierwave/storage/abstract'

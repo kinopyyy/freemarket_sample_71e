@@ -166,7 +166,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :validatable
   # Range for password length.
-  # パスワードは7〜128文字という意味木下メモ
+
   config.password_length = 7..128
 
   # Email regex used to validate email formats. It simply asserts that
