@@ -25,7 +25,7 @@ set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
 set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
 set :keep_releases, 5
 
-# S3設定6/26木下
+# S3設定
 set :linked_files, %w{config/master.key}
 
 
@@ -49,7 +49,7 @@ namespace :deploy do
   after :finishing, 'deploy:cleanup'
 end
 
-# 必要に応じて/環境変数をcapistranoでの自動デプロイで利用6/26木下
+# 必要に応じて/環境変数をcapistranoでの自動デプロイで利用
 set :default_env, {
   rbenv_root: "/usr/local/rbenv",
   path: "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH",

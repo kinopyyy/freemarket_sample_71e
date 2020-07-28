@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   root "items#index"
-  #クレカ登録削除機能 高松
+  #クレカ登録削除機能
   resources :credit_cards, only: [:new, :show] do
     collection do
       post 'show', to: 'credit_cards#show'
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
       get  'member_done'
       get  'category_index'
 
-      # 購入機能のルーティングです7/20
+      # 購入機能のルーティングです
       get 'purchase_index/:id', to: 'items#purchase_index'
       post 'pay/:id', to: 'items#pay'
       get 'done/:id', to: 'items#done'

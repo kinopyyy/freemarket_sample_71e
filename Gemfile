@@ -65,7 +65,7 @@ group :test do
   gem 'selenium-webdriver'
 
   # Easy installation and use of chromedriver to run system tests with Chrome
-  # 「bundle exec rspec」の際非推奨とあったのでwebdriversに書き換え6/19木下
+  # 「bundle exec rspec」の際非推奨とあったのでwebdriversに書き換え
   # gem 'chromedriver-helper'
   gem 'webdrivers'
 

@@ -8,7 +8,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Choose what kind of storage to use for this uploader:
  
 
-  # 環境ごとに保存先変更/デフォルトではstorage :fileがコメントアウトで入っている（木下）
+  # 環境ごとに保存先変更/デフォルトではstorage :fileがコメントアウトで入っている
   if Rails.env.development?
     storage :file
   elsif Rails.env.test?
